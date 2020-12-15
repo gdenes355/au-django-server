@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>au_django_server</Name>
+    <RootNamespace>au_django_server</RootNamespace>
+    <InterpreterId>MSBuild|au_django_server|$(MSBuildProjectFullPath)</InterpreterId>
+    <WebBrowserPort>53181</WebBrowserPort>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3c062a47-4468-409a-b79f-1b0e15407a41</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>au_django_server.settings</DjangoSettingsModule>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="manage.py" />
+    <Compile Include="au_django_server\__init__.py" />
+    <Compile Include="au_django_server\settings.py" />
+    <Compile Include="au_django_server\urls.py" />
+    <Compile Include="au_django_server\wsgi.py" />
+    <Compile Include="sandbox\admin.py" />
+    <Compile Include="sandbox\apps.py" />
+    <Compile Include="sandbox\migrations\0001_initial.py" />
+    <Compile Include="sandbox\migrations\0002_auplayer_name.py" />
+    <Compile Include="sandbox\migrations\0003_auplayer_e_id.py" />
+    <Compile Include="sandbox\migrations\0004_augame_target.py" />
+    <Compile Include="sandbox\migrations\0005_auto_20201209_0130.py" />
+    <Compile Include="sandbox\migrations\0006_auto_20201210_0453.py" />
+    <Compile Include="sandbox\migrations\__init__.py" />
+    <Compile Include="sandbox\models\au.py" />
+    <Compile Include="sandbox\models\__init__.py" />
+    <Compile Include="sandbox\tests.py" />
+    <Compile Include="sandbox\urls.py" />
+    <Compile Include="sandbox\views\au.py" />
+    <Compile Include="sandbox\views\__init__.py" />
+    <Compile Include="sandbox\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="sandbox\" />
+    <Folder Include="au_django_server\" />
+    <Folder Include="sandbox\migrations\" />
+    <Folder Include="sandbox\migrations\__pycache__\" />
+    <Folder Include="sandbox\models\" />
+    <Folder Include="sandbox\models\__pycache__\" />
+    <Folder Include="sandbox\static\" />
+    <Folder Include="sandbox\static\sandbox\" />
+    <Folder Include="sandbox\static\sandbox\css\" />
+    <Folder Include="sandbox\static\sandbox\js\" />
+    <Folder Include="sandbox\templates\" />
+    <Folder Include="sandbox\templates\sandbox\" />
+    <Folder Include="sandbox\views\" />
+    <Folder Include="sandbox\views\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+    <Content Include="sandbox\migrations\__pycache__\0001_initial.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\0002_auplayer_name.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\0003_auplayer_e_id.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\0004_augame_target.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\0005_auto_20201209_0130.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\0006_auto_20201210_0453.cpython-36.pyc" />
+    <Content Include="sandbox\migrations\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="sandbox\models\__pycache__\au.cpython-36.pyc" />
+    <Content Include="sandbox\models\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="sandbox\static\sandbox\css\.gitkeep" />
+    <Content Include="sandbox\static\sandbox\js\.gitkeep" />
+    <Content Include="sandbox\templates\sandbox\page_base.html" />
+    <Content Include="sandbox\templates\sandbox\base_proxy.html" />
+    <Content Include="sandbox\templates\sandbox\index.html" />
+    <Content Include="sandbox\views\__pycache__\admin.cpython-36.pyc" />
+    <Content Include="sandbox\views\__pycache__\au.cpython-36.pyc" />
+    <Content Include="sandbox\views\__pycache__\__init__.cpython-36.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.html">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="..\..\Envs\au_django_server\">
+      <Id>au_django_server</Id>
+      <Version>3.6</Version>
+      <Description>au_django_server (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

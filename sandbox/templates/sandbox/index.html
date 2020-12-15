@@ -1,0 +1,122 @@
+{% extends 'sandbox/page_base.html' %}
+
+{% block title %}sandbox{% endblock %}
+
+{% block extrahead %}
+<style>
+    body {
+        background-color: unset;
+    }
+    html {
+        /* Static, full-size background. Src: https://css-tricks.com/perfect-full-page-background-image/#article-header-id-0 */
+        background-image: url("../../../static/images/background.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100%
+    }
+    .core {
+        
+        {% if game.state == 'Voting' %}
+            background-color: #ffffF0BE
+        {% elif game.state == 'Lobby' %}
+            background-color: #F0ffF0BE
+        {% else %}
+            background-color: #ffffffBE
+        {% endif %}
+        
+    }
+    
+    .impostor {
+    {% if outcome %}
+        color: red;
+        border: 2px solid red;
+    {% endif %}
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container p-5 core">
+    {% if game %}
+        <h1>{{ game.state }} <span class="float-right">{{game.target}}</span></h1>
+        <h3>Code: {{ game.code }}</h3>
+        <div class="float-right mb-2" style="margin-top: -50px">
+            <form method="post" class="float-right ml-3">
+                {% csrf_token %}
+                <input type="hidden" name="cmd" value="create" />
+                <button type="submit" class="btn btn-secondary">Restart</button>
+            </form>
+            {% if game.state == 'Lobby' %}
+                <form method="post" class="float-right ml-3">
+                    {% csrf_token %}
+                    <input type="hidden" name="cmd" value="start" />
+                    <button type="submit" class="btn btn-success">Start!</button>
+                </form>
+            {% elif game.state == 'Game' %}
+                <form method="post" class="float-right ml-3">
+                    {% csrf_token %}
+                    <input type="hidden" name="cmd" value="vote" />
+                    <button type="submit" class="btn btn-warning"><span class="fas fa-user-friends"></span> Meeting</button>
+                </form>
+            {% elif game.state == 'Voting' %}
+                <form method="post" class="float-right ml-3">
+                    {% csrf_token %}
+                    <input type="hidden" name="cmd" value="resume" />
+                    <button type="submit" class="btn btn-success"><span class="fas fa-play"></span> Resume</button>
+                </form>
+            {% endif %}
+        </div>
+        {% if game.state != 'Lobby' and outcome %}
+            <div class="alert alert-{% if outcome == 'Santas win!' %}danger{% else %}success{%endif%}">{{ outcome }}</div>
+        {% endif %}
+
+        <table class="table table-hover table-striped w-100">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Col</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                    <tr class="{% if player.impostor %}impostor{%endif%}">
+                        <td class="font-weight-bold">{{player.name}}</td>
+                        <td style="background-color:#{{ player.col }}"></td>
+                        <td>{{ player.state }}</td>
+                        <td>
+
+                        <form method="post" class="float-right">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{player.id}}" />
+                            {% if game.state == 'Voting' %}
+                                {% if player.state == "Playing" or player.state == 'Called vote' %}
+                                    <button type="submit" name="cmd" value="vo" class="btn btn-sm btn-info"><span class="fas fa-plane"></span></button>
+                                {% endif %}
+                            {% else %}
+                                <button type="submit" name="cmd" value="rm" class="btn btn-sm btn-danger"><span class="fas fa-user-times"></span></button>
+                            {% endif %}
+                        </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There is currently no game with this game id, but you can create one any time.</p>
+        <div class="float-right mb-2" style="margin-top: -50px">
+            <form method="post" class="float-right ml-3">
+                {% csrf_token %}
+                <input type="hidden" name="cmd" value="create" />
+                <button type="submit" class="btn btn-secondary">Create</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+<script>
+    setTimeout(function(){window.location.reload(); },2000);
+</script>
+{% endblock %}
